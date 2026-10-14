@@ -2,6 +2,8 @@
 
 # 🏙️ CivicFix ⚡
 
+Demo link:https://civic-fix-gamma.vercel.app/
+
 ### Smart Civic Issue Reporting, Team-Based Field Operations & Transparent Resolution Management
 
 *A unified platform connecting citizens 🧑‍💻, municipal administrators 🏛️, and field crews 👷 to resolve urban infrastructure issues with full transparency and end-to-end auditability.*
