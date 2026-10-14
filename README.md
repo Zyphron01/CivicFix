@@ -215,7 +215,7 @@ CivicFix maintains a clear architectural boundary between **Operational Status**
 * **Language:** TypeScript 5.0 (Strict mode enabled)
 * **Styling & Design System:** Tailwind CSS with custom slate/dark aesthetic and CSS grid systems
 * **Database & Authentication:** Supabase PostgreSQL with Row Level Security (RLS) & Supabase Auth
-* **Storage:** Supabase Storage (canonical `civicfix-reports` and `civicfix-evidence` buckets)
+* **Storage:** Supabase Storage (canonical `civicfix-evidence` bucket with folder-scoped access)
 * **Mapping & GIS:** Leaflet & OpenStreetMap for browser-based interactive location mapping
 * **AI & Validation:** Integrated advisory heuristic triage engine and before/after verification scoring
 
@@ -240,20 +240,33 @@ npm install
 ```
 
 ### 3. Environment Setup
-Create a `.env.local` file in the root directory:
+Copy the example environment configuration file:
+```bash
+cp .env.example .env.local
+```
+Then configure your credentials in `.env.local`:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+OPENROUTER_API_KEY=your-openrouter-api-key
+OPENROUTER_MODEL=google/gemini-2.5-flash
 ```
 
-### 4. Run Development Server
+### 4. Apply Database Migrations
+Apply the PostgreSQL migrations located in `supabase/migrations/` to your Supabase project:
+```bash
+npx supabase db push
+```
+Or execute the SQL migration files sequentially in the Supabase SQL Editor.
+
+### 5. Run Development Server
 ```bash
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 5. Build for Production
+### 6. Build for Production
 ```bash
 npm run build
 npm run start
